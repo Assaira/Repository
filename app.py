@@ -13,6 +13,72 @@ st.set_page_config(
     layout="wide"
 )
 
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+from streamlit_option_menu import option_menu
+
+# Configuration de la page
+st.set_page_config(
+    page_title="Analyse Financière Personnelle",
+    page_icon="💰",
+    layout="wide"
+)
+
+# ... (ton code CSS personnalisé qu'on a mis juste avant) ...
+
+# =========================================================
+# BARRE LATÉRALE DE NAVIGATION PROFESSIONNELLE
+# =========================================================
+with st.sidebar:
+    selected = option_menu(
+        menu_title="Mon Application",
+        options=["Tableau de bord", "Transactions", "Analyses", "Alertes & Paramètres"],
+        icons=["house-door-fill", "wallet2", "graph-up-arrow", "gear-fill"],  # Icônes modernes
+        menu_icon="cash-stack",
+        default_index=0,
+        styles={
+            "container": {"padding": "0!important", "background-color": "#F9FBF9"},
+            "icon": {"color": "#2E7D32", "font-size": "16px"},
+            "nav-link": {
+                "font-size": "14px",
+                "text-align": "left",
+                "margin": "4px",
+                "border-radius": "8px",
+                "--hover-color": "#E8F5E9",
+            },
+            "nav-link-selected": {
+                "background-color": "#2E7D32", 
+                "color": "white",
+                "font-weight": "500"
+            },
+        }
+    )
+
+# =========================================================
+# GESTION DES PAGES SELON LA SÉLECTION DU MENU
+# =========================================================
+
+if selected == "Tableau de bord":
+    st.title("📊 Tableau de bord financier")
+    st.write("Bienvenue sur ton espace de suivi global.")
+    # Mets ici le code de ton tableau de bord (métriques, graphiques principaux...)
+
+elif selected == "Transactions":
+    st.title("💳 Historique des transactions")
+    st.write("Consulte et filtre l'ensemble de tes opérations.")
+    # Mets ici ton tableau de transactions / filtres
+
+elif selected == "Analyses":
+    st.title("📈 Analyses et Prévisions")
+    st.write("Visualise tes tendances de dépenses.")
+    # Mets ici tes graphiques d'analyse avancés
+
+elif selected == "Alertes & Paramètres":
+    st.title("⚙️ Seuils et Paramètres")
+    st.write("Gère tes alertes de budget.")
+    # Mets ici ton système d'alertes
+
 # =========================================================
 # 2. CATÉGORISATION AUTOMATIQUE
 # =========================================================
